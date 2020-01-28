@@ -79,4 +79,4 @@ delivery_day|date|null: false|
 ### Association
 - has_many :comments
 - has_many :items
-- has_many :many payments
+- has_many :payments
