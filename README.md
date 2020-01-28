@@ -1,24 +1,81 @@
-# README
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|e-mail|string|null: false|
+|passwaord|string|null: false|
+|name|string|null: false|
+|name-kana|string|null: false|
+|birthday|datetime|null: false|
+|TEL|integer|null: false|
+|address|string|null: false|
+### Association
+- has_many :comments
+- has_many :items
+- has_many :many payments
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+|text|text|null: false|
+### Association
+- belongs_to :user
+- belongs_to :item
 
-Things you may want to cover:
+## itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|name|string|null: false|
+|price|integer|null: false|
+|text|text|null: false|
+|image|string|null: false|
+|categoyr_id|integer|null: false, foreign_key: true|
+|delivery_dmg|string|null: false|
+|deliverr_method|string|null: false|
+|delivery_area|string|null: false|
+delivery_day|date|null: false|
+### Association
+- has_many :comments
+- belongs_to :user
 
-* Ruby version
+## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|card_nunber|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :
 
-* System dependencies
+## sellerテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|text|text|null: true|
+### Association
+- has_many :comments
+- has_many :items
+- has_many :many payments
 
-* Configuration
+## buyerテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|text|text|null: true|
+### Association
+- has_many :comments
+- has_many :items
+- has_many :many payments
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## seller_buyerテーブル
+|Column|Type|Options|
+|------|----|-------|
+|seller_id|integer|null: false, foreign_key: true|
+|buyer_id|integer|null: false, foreign_key: true|
+|text|text|null: true|
+### Association
+- has_many :comments
+- has_many :items
+- has_many :many payments
