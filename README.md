@@ -13,7 +13,7 @@
 ### Association
 - has_many :comments
 - has_many :items
-- has_many :many payments
+- has_many :payments
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -48,7 +48,7 @@ delivery_day|date|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |card_nunber|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :
+- belongs_to : user
 
 ## sellerテーブル
 |Column|Type|Options|
@@ -58,7 +58,7 @@ delivery_day|date|null: false|
 ### Association
 - has_many :comments
 - has_many :items
-- has_many :many payments
+- has_many :payments
 
 ## buyerテーブル
 |Column|Type|Options|
@@ -68,7 +68,7 @@ delivery_day|date|null: false|
 ### Association
 - has_many :comments
 - has_many :items
-- has_many :many payments
+- has_many :payments
 
 ## seller_buyerテーブル
 |Column|Type|Options|
