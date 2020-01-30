@@ -19,6 +19,7 @@
 ## addressテーブル
 |Column|Type|Options|
 |------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
 |postal_code|integer|null: false|
 |prefecturess|string|null: false|
 |municipality|string|null: false|
@@ -45,19 +46,48 @@
 |name|string|null: false|
 |price|integer|null: false|
 |text|text|null: false|
-|image|string|null: false|
-|categoyr_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :comments
 - belongs_to :user
 
+## categoryテーブル
+|Column|Type|Options|
+|------|----|-------|
+|women|string|
+|mens|string|
+|baby_kids|string|
+|interior_house_accessories|string|
+|books_musics_games|string|
+|toy_hoby_goods|string|
+|cosmetics_perfumes＿beauty|string|
+|home_appliances_smartphone_camera|string|
+|sports_leisure|string|
+|hand_made|string|
+|ticket|string|
+|car_motorcycle|string|
+|other|string|
+### Association
+- belongs_to :item
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :item
+- belongs_to :category
+
 ## deliveryテーブル
 |Column|Type|Options|
 |------|----|-------|
-|delivery_dmg|string|null: false|
-|deliverr_method|string|null: false|
-|delivery_area|string|null: false|
-|delivery_day|date|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+|dmg|string|null: false|
+|method|string|null: false|
+|area|string|null: false|
+|day|date|null: false|
 ### Association
 - belongs_to :user
 - belongs_to :item
@@ -76,6 +106,7 @@
 |user_id|integer|null: false, foreign_key: true|
 |text|text|null: true|
 ### Association
+- belongs_to : user
 - has_many :comments
 - has_many :items
 - has_many :payments
@@ -86,6 +117,7 @@
 |user_id|integer|null: false, foreign_key: true|
 |text|text|null: true|
 ### Association
+- belongs_to : user
 - has_many :comments
 - has_many :items
 - has_many :payments
@@ -97,6 +129,8 @@
 |buyer_id|integer|null: false, foreign_key: true|
 |text|text|null: true|
 ### Association
+- belongs_to : seller_id
+- belongs_to : buyer_id
 - has_many :comments
 - has_many :items
 - has_many :payments
