@@ -36,7 +36,7 @@
 |text|text|null: false|
 ### Association
 - belongs_to :user
-- belongs_to :items
+- belongs_to :item
 
 ## itemsテーブル
 |Column|Type|Options|
