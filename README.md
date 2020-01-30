@@ -42,7 +42,8 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
+|seller_id|integer|null: false, foreign_key: true|
+|buyer_id|integer|null: false, foreign_key: true|
 |name|string|null: false|
 |price|integer|null: false|
 |text|text|null: false|
@@ -129,8 +130,8 @@
 |buyer_id|integer|null: false, foreign_key: true|
 |text|text|null: true|
 ### Association
-- belongs_to : seller_id
-- belongs_to : buyer_id
+- belongs_to :seller
+- belongs_to :buyer
 - has_many :comments
 - has_many :items
 - has_many :payments
