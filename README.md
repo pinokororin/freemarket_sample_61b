@@ -3,17 +3,22 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
-|e-mail|string|null: false|
 |passwaord|string|null: false|
 |name|string|null: false|
 |name-kana|string|null: false|
 |birthday|datetime|null: false|
-|TEL|integer|null: false|
-|address|string|null: false|
 ### Association
 - has_many :comments
 - has_many :items
 - has_many :payments
+
+## addressテーブル
+|Column|Type|Options|
+|------|----|-------|
+|e-mail|string|null: false|
+|TEL|integer|null: false|
+### Association
+- has_many :items
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -23,24 +28,18 @@
 |text|text|null: false|
 ### Association
 - belongs_to :user
-- belongs_to :item
+- belongs_to :items
 
-## itemsテーブル
+## deliveryテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|name|string|null: false|
-|price|integer|null: false|
-|text|text|null: false|
-|image|string|null: false|
-|categoyr_id|integer|null: false, foreign_key: true|
 |delivery_dmg|string|null: false|
 |deliverr_method|string|null: false|
 |delivery_area|string|null: false|
-delivery_day|date|null: false|
+|delivery_day|date|null: false|
 ### Association
-- has_many :comments
 - belongs_to :user
+- belongs_to :items
 
 ## cardsテーブル
 |Column|Type|Options|
@@ -50,32 +49,44 @@ delivery_day|date|null: false|
 ### Association
 - belongs_to : user
 
-## sellerテーブル
+## seller_itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|text|text|null: true|
+|name|string|null: false|
+|price|integer|null: false|
+|text|text|null: false|
+|image|string|null: false|
+|categoyr_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :comments
 - has_many :items
 - has_many :payments
 
-## buyerテーブル
+## buyer_itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|text|text|null: true|
+|name|string|null: false|
+|price|integer|null: false|
+|text|text|null: false|
+|image|string|null: false|
+|categoyr_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :comments
 - has_many :items
 - has_many :payments
 
-## seller_buyerテーブル
+## seller_buyer_itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |seller_id|integer|null: false, foreign_key: true|
 |buyer_id|integer|null: false, foreign_key: true|
-|text|text|null: true|
+|name|string|null: false|
+|price|integer|null: false|
+|text|text|null: false|
+|image|string|null: false|
+|categoyr_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :comments
 - has_many :items
