@@ -4,9 +4,13 @@
 |------|----|-------|
 |nickname|string|null: false|
 |passwaord|string|null: false|
-|name|string|null: false|
-|name-kana|string|null: false|
+|e-mail|string|null: false|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|name_kana|string|null: false|
 |birthday|datetime|null: false|
+|profile|string|null: true|
+|gender|string|null: true|
 ### Association
 - has_many :comments
 - has_many :items
@@ -15,10 +19,14 @@
 ## addressテーブル
 |Column|Type|Options|
 |------|----|-------|
-|e-mail|string|null: false|
+|postal_code|integer|null: false|
+|prefecturess|string|null: false|
+|municipality|string|null: false|
+|house_number|string|null: false|
+|building_name|string|null: true|
 |TEL|integer|null: false|
 ### Association
-- has_many :items
+- belongs_to :user
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -29,6 +37,19 @@
 ### Association
 - belongs_to :user
 - belongs_to :items
+
+## itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|name|string|null: false|
+|price|integer|null: false|
+|text|text|null: false|
+|image|string|null: false|
+|categoyr_id|integer|null: false, foreign_key: true|
+### Association
+- has_many :comments
+- belongs_to :user
 
 ## deliveryテーブル
 |Column|Type|Options|
@@ -49,44 +70,32 @@
 ### Association
 - belongs_to : user
 
-## seller_itemsテーブル
+## sellersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|name|string|null: false|
-|price|integer|null: false|
-|text|text|null: false|
-|image|string|null: false|
-|categoyr_id|integer|null: false, foreign_key: true|
+|text|text|null: true|
 ### Association
 - has_many :comments
 - has_many :items
 - has_many :payments
 
-## buyer_itemsテーブル
+## buyersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|name|string|null: false|
-|price|integer|null: false|
-|text|text|null: false|
-|image|string|null: false|
-|categoyr_id|integer|null: false, foreign_key: true|
+|text|text|null: true|
 ### Association
 - has_many :comments
 - has_many :items
 - has_many :payments
 
-## seller_buyer_itemsテーブル
+## sellers_buyersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |seller_id|integer|null: false, foreign_key: true|
 |buyer_id|integer|null: false, foreign_key: true|
-|name|string|null: false|
-|price|integer|null: false|
-|text|text|null: false|
-|image|string|null: false|
-|categoyr_id|integer|null: false, foreign_key: true|
+|text|text|null: true|
 ### Association
 - has_many :comments
 - has_many :items
