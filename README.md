@@ -60,7 +60,7 @@
 |delivery_day|date|null: false|
 ### Association
 - belongs_to :user
-- belongs_to :items
+- belongs_to :item
 
 ## cardsテーブル
 |Column|Type|Options|
