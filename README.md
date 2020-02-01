@@ -70,11 +70,11 @@
 - has_many :nices(いいね)
 - belongs_to :user
 
-## imagesテーブル
-|Column|Type|Options| 
-|------|----|-------| 
-|item_id|integer| null: false, foreign_key: true| 
-|image|string|null: false| 
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|integer| null: false, foreign_key: true|
+|image|string|null: false|
 
 ### Association
 - belong_to :item
