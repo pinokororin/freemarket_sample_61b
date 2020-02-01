@@ -13,14 +13,14 @@
 |birthday|integer|null: false|
 |phone_number|string|null: false| 
 |profile|text|null: true|
-|icon|text|       |
+|icon|text||
 
 ### Association 
 - has_many :items
 - has_many :comments
-- has_one :card
-- has_many :addresses
-- has_many :nices(いいね)
+- has_many :cards
+- has_one :address
+- has_many :likes, dependent: :destroy
 
 ## addressテーブル
 |Column|Type|Options|
@@ -33,7 +33,7 @@
 |municipalities|string|null: false|
 |house_number|string|null: false|
 |building_name|string|null: true|
-|phone_number|integer|null: false| 
+|phone_number|integer|null: false|
 
 ### Association
 - has_many :transactions
@@ -67,7 +67,7 @@
 ### Association
 - has_many :comments
 - has_many :images
-- has_many :nices(いいね)
+- has_many :likes
 - belongs_to :user
 
 ## imagesテーブル
@@ -90,7 +90,7 @@
 - belongs_to :user
 - belongs_to :items
 
-## nice(いいね)テーブル
+## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false,foreign_key: true|
