@@ -20,6 +20,7 @@
 - has_many :comments
 - has_many :cards
 - has_many :addresses
+- has_many :nices(いいね)
 
 ## addressテーブル
 |Column|Type|Options|
@@ -99,35 +100,3 @@
 ### Association
 - belong_to :user
 - belong_to :item
-
-
-## sellersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|text|text|null: true|
-### Association
-- has_many :comments
-- has_many :items
-- has_many :payments
-
-## buyersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|text|text|null: true|
-### Association
-- has_many :comments
-- has_many :items
-- has_many :payments
-
-## sellers_buyersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|seller_id|integer|null: false, foreign_key: true|
-|buyer_id|integer|null: false, foreign_key: true|
-|text|text|null: true|
-### Association
-- has_many :comments
-- has_many :items
-- has_many :payments
