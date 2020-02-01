@@ -1,32 +1,54 @@
 # freemarket_sample_61b DB設計
+
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
-|passwaord|string|null: false|
+|password|string|null: false|
 |e-mail|string|null: false|
 |family_name|string|null: false|
 |first_name|string|null: false|
-|name_kana|string|null: false|
-|birthday|datetime|null: false|
-|profile|string|null: true|
-|gender|string|null: true|
-### Association
-- has_many :comments
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|birthday|integer|null: false|
+|phone_number|string|null: false| 
+|profile|text|null: true|
+|icon|text|       |
+
+### Association 
 - has_many :items
-- has_many :payments
+- has_many :comments
+- has_many :cards 
+- has_many :addresses 
 
 ## addressテーブル
 |Column|Type|Options|
 |------|----|-------|
+|user_id|references|null: false, foreing_key:true|
+|name|string|null: false| 
+|name_kana|string|null: false| 
 |postal_code|integer|null: false|
-|prefecturess|string|null: false|
-|municipality|string|null: false|
+|prefectures|string|null: false|
+|municipalities|string|null: false|
 |house_number|string|null: false|
 |building_name|string|null: true|
-|TEL|integer|null: false|
+|phone_number|integer|null: false| 
+
+### Association 
+- has_many :transactions 
+- belong_to :user
+
+## cardsテーブル ^^
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|card_number|integer|null: false, foreign_key: true|
+|expiration_date|integer|null: false| 
+|securitycord|integer|null: false| 
+
 ### Association
-- belongs_to :user
+- belongs_to : user
+
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -62,13 +84,6 @@
 - belongs_to :user
 - belongs_to :items
 
-## cardsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|card_nunber|integer|null: false, foreign_key: true|
-### Association
-- belongs_to : user
 
 ## sellersテーブル
 |Column|Type|Options|
