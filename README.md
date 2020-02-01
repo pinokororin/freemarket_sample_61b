@@ -18,7 +18,7 @@
 ### Association 
 - has_many :items
 - has_many :comments
-- has_many :cards
+- has_one :card
 - has_many :addresses
 - has_many :nices(いいね)
 
@@ -95,7 +95,7 @@
 |------|----|-------|
 |user_id|integer|null: false,foreign_key: true|
 |item_id|integer|null: false,foreign_key: true|
-|number|integer|null: false|
+
 
 ### Association
 - belong_to :user
