@@ -18,9 +18,9 @@
 ### Association 
 - has_many :items
 - has_many :comments
-- has_many :cards
-- has_many :addresses
-- has_many :nices(いいね)
+- has_many :cards
+- has_many :addresses
+- has_many :nices(いいね)
 
 ## addressテーブル
 |Column|Type|Options|
@@ -35,9 +35,9 @@
 |building_name|string|null: true|
 |phone_number|integer|null: false| 
 
-### Association
-- has_many :transactions
-- belong_to :user
+### Association
+- has_many :transactions
+- belong_to :user
 
 ## cardsテーブル
 |Column|Type|Options|
@@ -67,7 +67,7 @@
 ### Association
 - has_many :comments
 - has_many :images
-- has_many :nices(いいね)
+- has_many :nices(いいね)
 - belongs_to :user
 
 ## imagesテーブル
@@ -77,7 +77,7 @@
 |image|string|null: false| 
 
 ### Association
-- belong_to :item
+- belong_to :item
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -98,5 +98,5 @@
 |number|integer|null: false|
 
 ### Association
-- belong_to :user
-- belong_to :item
+- belong_to :user
+- belong_to :item
