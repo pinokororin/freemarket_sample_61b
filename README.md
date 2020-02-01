@@ -38,7 +38,7 @@
 - has_many :transactions 
 - belong_to :user
 
-## cardsテーブル ^^
+## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
@@ -49,40 +49,56 @@
 ### Association
 - belongs_to : user
 
-
-## commentsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
-|text|text|null: false|
-### Association
-- belongs_to :user
-- belongs_to :items
-
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |name|string|null: false|
 |price|integer|null: false|
-|text|text|null: false|
-|image|string|null: false|
-|categoyr_id|integer|null: false, foreign_key: true|
+|item_explanation|text|null: false|
+|category|integer|null: false| 
+|product_situation(商品の状態)|string|| 
+|shipping_charges(配送料の負担)|integer|null: false| 
+|shipping_method(発送方法)|string|null: false|
+|shipping_origin(発送元)|integer|null: false| 
+|arrival_days(到着日数)|integer|| 
+
 ### Association
 - has_many :comments
+- has_many :images
+- has_many :nices(いいね) 
 - belongs_to :user
 
-## deliveryテーブル
+## imagesテーブル
+|Column|Type|Options| 
+|------|----|-------| 
+|item_id|integer| null: false, foreign_key: true| 
+|image|string|null: false| 
+
+### Association 
+- belong_to :item
+
+## commentsテーブル 
 |Column|Type|Options|
 |------|----|-------|
-|delivery_dmg|string|null: false|
-|deliverr_method|string|null: false|
-|delivery_area|string|null: false|
-|delivery_day|date|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+|text|text|null: false|
+
 ### Association
 - belongs_to :user
 - belongs_to :items
+
+## nice(いいね)テーブル 
+|Column|Type|Options| 
+|------|----|-------| 
+|user_id|integer|null: false,foreign_key: true| 
+|item_id|integer|null: false,foreign_key: true| 
+|number|integer|null: false| 
+
+### Association 
+- belong_to :user 
+- belong_to :item
 
 
 ## sellersテーブル
