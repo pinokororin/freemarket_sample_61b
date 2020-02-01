@@ -16,11 +16,12 @@
 |icon|text||
 
 ### Association 
-- has_many :items
-- has_many :comments
-- has_many :cards
-- has_one :address
+- has_many :items, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :cards, dependent: :destroy
+- has_one :address, dependent: :destroy
 - has_many :likes, dependent: :destroy
+- has_many :user-transactions, dependent: :destroy
 
 ## addressテーブル
 |Column|Type|Options|
