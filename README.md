@@ -76,7 +76,7 @@
 |item_id|integer| null: false, foreign_key: true|
 |image|string|null: false|
 
-### Association
+### Association
 - belong_to :item
 
 ## commentsテーブル
@@ -90,13 +90,59 @@
 - belongs_to :user
 - belongs_to :items
 
-## nice(いいね)テーブル
+## nice(いいね)テーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false,foreign_key: true|
 |item_id|integer|null: false,foreign_key: true|
 |number|integer|null: false|
 
-### Association
+### Association
 - belong_to :user
 - belong_to :item
+
+## transactionテーブル
+|Column|Type|Options|
+|------|----|-------|
+|items_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|address_id|integer|null: false, foreign_key: true|
+|date|integer|null: false|
+|transaction_status_id|integer|null: false, foreign_key: true|
+
+### Association
+- has_many :transaction_messages
+- has_many :transaction_status
+- has_many :user_transactions
+
+## transaction_message
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|transaction_id|integer|null: false, foreign_key: true|
+|transaction_date|integer|null: false|
+|text|string||
+
+### Association
+- has_many :users
+- has_many :transactions
+
+## transaction_statusテーブル
+|Column|Type|Options|
+|------|----|-------|
+|transaction_id|integer|null: false, foreign_key: true|
+|transaction_status_date|integer|null: false|
+|situation|string|null: false|
+
+### Association
+- belong_to :transaction
+
+## user_transactionテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|transaction_id|integer|null: false, foreign_key: true|
+
+### Association
+- belong_to :user
+- belong_to :transaction
