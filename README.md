@@ -1,4 +1,4 @@
-# freemarket_sample_61b DB設計
+# README
 
 ## usersテーブル
 |Column|Type|Options|
@@ -37,7 +37,7 @@
 |phone_number|integer|null: false|
 
 ### Association
-- has_many :transactions
+- has_many :transactions, dependent: :destroy
 - belong_to :user
 
 ## cardsテーブル
@@ -66,9 +66,9 @@
 |arrival_days(到着日数)|integer|| 
 
 ### Association
-- has_many :comments
-- has_many :images
-- has_many :likes
+- has_many :comments, dependent: :destroy
+- has_many :images, dependent: :destroy
+- has_many :likes, dependent: :destroy
 - belongs_to :user
 
 ## imagesテーブル
@@ -89,7 +89,7 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :items
+- belongs_to :item
 
 ## likesテーブル
 |Column|Type|Options|
